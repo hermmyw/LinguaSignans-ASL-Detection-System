@@ -1,0 +1,10 @@
+numpy
+flask
+opencv-python
+keras
+tensorflow
+imutils
+google-colab
+pandas
+scikit-learn
+ipython
