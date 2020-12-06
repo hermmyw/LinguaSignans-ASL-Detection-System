@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LinguaSignans</title>
+  <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100, 500">
+</head>
+<body>
+  <div class="container">
+    <div class="menu">
+      <ul>
+        <li>Home</li>
+        <li><a href="{{ url_for('detect_page') }}" class="detect-btn">Detector</a></li>
+        <li><a href="https://github.com/hermmyw/LinguaSignans-ASL-Detection-System" class="detect-btn">Source</a></li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+    <div class="banner">
+      <div class="app-text">
+        <h1>LinguaSignans</h1>
+        <p>Real-Time American Sign Language Detector</p>
+      </div>
+      <div class="start-btn">
+        <button class="btn">
+          <a href="{{ url_for('detect_page') }}">
+            <span class="circle">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Get Started!</span>
+          </a>
+        </button>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
