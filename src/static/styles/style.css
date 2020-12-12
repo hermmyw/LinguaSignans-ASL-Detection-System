@@ -131,11 +131,28 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
     color: #fff;
 }
-.videocontainer{
-    display: block;
+.detectorcontainer{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
     text-align: center;
+    margin: 50px 0 50px 0;
+}
+.gesturecontainer {
+    display: flex;
+    flex-direction:column;
+    width: 300px;
+}
+.gesture {
+    width: 225px;
+    height: 225px;
+    margin: 10px;
+}
+.videocontainer {
+    display: flex;
+    flex-direction:column;
 }
 .videosrc{
-    margin: 70px 0 70px 0;
+    margin: 10px 0 10px 0;
     width: 60%;
 }

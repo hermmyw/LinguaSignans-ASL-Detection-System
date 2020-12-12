@@ -17,10 +17,15 @@
         <li>Contact Us</li>
       </ul>
     </div>
-    <div class="videocontainer">
-      <p>Start by placing your hand in the bounded box.</p>
-      <img class="videosrc" src="{{ url_for('video_feed') }}">
-      <p>Try to hold each gesture for at least 3 seconds.</p>
+    <div class="detectorcontainer">
+      <div class="gesturecontainer">
+        <img class="gesture" src="{{ url_for('static',filename='gestures.jpg') }}">
+      </div>
+      <div class="videocontainer">
+        <p>Start by placing your hand in the bounded box.</p>
+        <img class="videosrc" src="{{ url_for('video_feed') }}">
+        <p>Try to hold each gesture for at least 3 seconds.</p>
+      </div>
     </div>
   </div>
 </body>

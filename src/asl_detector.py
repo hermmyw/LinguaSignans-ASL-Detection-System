@@ -7,20 +7,38 @@ from keras.models import load_model
 
 # from IPython.display import display, Javascript
 # from google.colab.output import eval_js
-# from base64 import b64decode
+from base64 import b64decode
 
 class AslDetector:
     def __init__(self):
-        self.model = load_model("/gdrive/MyDrive/504/CNN.h5")
+        self.model = load_model("ASL_MNIST_CNN_20.h5")
+        self.lookUpTable1 = np.empty((1,256), np.uint8)
+        for i in range(256):
+            self.lookUpTable1[0,i] = np.clip(pow(i / 255.0, 0.5) * 255.0, 0, 255)
+        self.lookUpTable2 = np.empty((1,256), np.uint8)
+        for i in range(256):
+            self.lookUpTable2[0,i] = np.clip(pow(i / 255.0, 16) * 255.0, 0, 255)
     
-    def detect(self, img):
-        img_width = img.shape[1]
-        img_height = img.shape[0]
-        cut_point1 = int((img_width - img_height ) / 2) - 1
-        cut_point2 = int((img_width + img_height ) / 2)
-        img = img[:, cut_point1:cut_point2 ,:]
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img = cv2.resize(img,(28,28))
-        img = img.reshape(-1,28,28,1)
+    def detect(self, frame):
+        ####################################################
+        # Frame processing
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        frame = cv2.LUT(frame, self.lookUpTable1)
+        frame = cv2.GaussianBlur(frame, (31,31),0)
+        ret2, frame_mask1 = cv2.threshold(frame, 0 ,255 , cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        frame = cv2.LUT(frame, self.lookUpTable2)
+        frame_mask = frame_mask1 == 255
+        frame = 255 - (255-frame) * frame_mask
+        frame = cv2.resize(frame,(28,28))
+        ####################################################
+        
+        ####################################################
+        img = frame.reshape(-1,28,28,1)
         y_pred = self.model.predict(img)
-        return y_pred
+        num = np.argmax(y_pred)
+        y_prob = y_pred[0,num]
+        if num <= 8:
+            letter = chr(num + 65)
+        else:
+            letter = chr(num + 66)
+        return y_prob, letter
