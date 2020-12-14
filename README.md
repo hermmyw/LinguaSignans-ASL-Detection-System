@@ -10,7 +10,8 @@ Our project targets recognizing American Sign Language (ASL) using computer visi
 Many language systems have developed their own sign language to assist communication among people with hearing impairment. Sign language attempts to remove the communication barrier between hearing-impaired people and others even when no hearing aids are present. Among all the sign languages, American Sign Language (ASL) is the most widespread language in the United States and the fourth-most studied second language at American universities. However, not every one of us understands ASL. People with hearing disabilities spend a considerable amount of time to learn ASL, but the language barrier still exists between individuals who use and understand ASL and those who don’t. The reason that we want to utilize Computer Vision to build a real-time sign language detection system is to remove this barrier completely, allowing everyone to communicate smoothly with one another. Technological advancements in Machine Learning and Computer Vision enable us to create a better simultaneous detection system that accurately recognizes ASL hand gestures. As accessibility is getting more and more attention in our society nowadays, our project aims to create a positive impact by supporting social inclusion especially for people with hearing disabilities.ystem
 
 ## Usage
-Web application tested under python 3.8.5
+Web application has only been tested on MacOS 10.15.7, Python 3.8.5, and Chrome 87.0.
+
 In the target directory, run
 ```
 $ pip install -r src/requirements.txt
