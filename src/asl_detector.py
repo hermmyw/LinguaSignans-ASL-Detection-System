@@ -3,10 +3,6 @@ import numpy as np
 import imutils
 import cv2
 from keras.models import load_model
-# from google.colab.patches import cv2_imshow
-
-# from IPython.display import display, Javascript
-# from google.colab.output import eval_js
 from base64 import b64decode
 
 class AslDetector:
@@ -17,7 +13,8 @@ class AslDetector:
             self.lookUpTable1[0,i] = np.clip(pow(i / 255.0, 0.5) * 255.0, 0, 255)
         self.lookUpTable2 = np.empty((1,256), np.uint8)
         for i in range(256):
-            self.lookUpTable2[0,i] = np.clip(pow(i / 255.0, 16) * 255.0, 0, 255)
+            self.lookUpTable2[0,i] = np.clip(pow(i / 255.0, 32) * 255.0, 0, 255) 
+            # greate the 16, higher contrast
     
     def detect(self, frame):
         ####################################################
